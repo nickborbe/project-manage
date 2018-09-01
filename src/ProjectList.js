@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
 import axios from 'axios';
-import AddTask from './addTask';
-import EditTask from './editTask'
-import User from './user'
+import AddTask from './AddProject';
+import EditTask from './EditProject'
+
 
 
 class TodoList extends Component {

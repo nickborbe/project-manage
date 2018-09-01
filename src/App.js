@@ -4,8 +4,8 @@ import { Link, Route } from 'react-router-dom'
 
 import './App.css';
 import axios from 'axios';
-import TodoList from './todoList'
-import User from './user'
+import TodoList from './ProjectList'
+import User from './User'
 
 
 
