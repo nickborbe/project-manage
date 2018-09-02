@@ -3,7 +3,7 @@ import axios from 'axios';
 
 
 
-class EditTask extends Component {
+class EditProject extends Component {
     constructor(props){
         super(props)
         this.state = {
@@ -13,7 +13,7 @@ class EditTask extends Component {
     }
 
     submitChanges(){
-        axios.post(`http://localhost:5000/api/tasks/edit/${this.props.taskProp}`,
+        axios.post(`http://localhost:5000/api/projects/edit/${this.props.projectProp}`,
          {title: this.state.titleInput, description: this.state.descInput},
          {withCredentials: true})
         .then((res)=>{
@@ -44,8 +44,8 @@ class EditTask extends Component {
 
     render(){
         return(
-        <div className="edit-task">
-        <h3> Edit This Task </h3>
+        <div className="edit-project">
+        <h3> Edit This Project </h3>
         <label> Title </label>
         <input value={this.state.titleInput} onChange={(e)=>{this.updateTitle(e)}}  type="text"/> 
   
@@ -64,4 +64,4 @@ class EditTask extends Component {
 
 }
 
-export default EditTask;
+export default EditProject;

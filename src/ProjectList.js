@@ -45,7 +45,7 @@ class ProjectList extends Component {
   renderForm(theIndex, theProjectID, theTitle, theDesc){
     if(this.state.showing === theIndex){
         return(
-          <EditProject blah={()=>this.getAllTheProjects()} ProjectProp={theProjectID} title={theTitle} desc={theDesc}></EditProject>
+          <EditProject blah={()=>this.getAllTheProjects()} projectProp={theProjectID} title={theTitle} desc={theDesc}></EditProject>
       )
     }
   }
