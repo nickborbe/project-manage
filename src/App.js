@@ -4,7 +4,7 @@ import { Link, Route } from 'react-router-dom'
 
 import './App.css';
 import axios from 'axios';
-import TodoList from './ProjectList'
+import ProjectList from './ProjectList'
 import User from './User'
 
 
@@ -112,7 +112,7 @@ toggleLoginForm(){
         <nav>
           <div>
           <Link to="/">Home</Link>
-          <Link to="/todolist">To-Do List</Link>
+          <Link to="/projectlist">My Projects</Link>
           </div>
           <div>
           {this.showUserElseShowLoginButton()}
@@ -124,7 +124,7 @@ toggleLoginForm(){
                   
 
         <div>
-          <Route path="/todolist" render={()=> <TodoList sendTheUser={this.getUserFromUserComponent} theActualUser={this.state.loggedInUser}/>} />
+          <Route path="/projectlist" render={()=> <ProjectList sendTheUser={this.getUserFromUserComponent} theActualUser={this.state.loggedInUser}/>} />
         </div>
 
 

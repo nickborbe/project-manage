@@ -6,7 +6,7 @@ import EditTask from './EditProject'
 
 
 
-class TodoList extends Component {
+class ProjectList extends Component {
   constructor(props){
     super(props)
     this.state = {
@@ -23,7 +23,7 @@ class TodoList extends Component {
 
 
 
-  getAllTheTasks(){
+  getAllTheProjects(){
     axios.get("http://localhost:5000/api/tasks", {withCredentials: true})
     .then((allTheTasks)=>{
       this.setState({theTasks: allTheTasks.data, showing: false, loggedInUser: this.state.loggedInUser})
@@ -45,7 +45,7 @@ class TodoList extends Component {
   renderForm(theIndex, theTaskID, theTitle, theDesc){
     if(this.state.showing === theIndex){
         return(
-          <EditTask blah={()=>this.getAllTheTasks()} taskProp={theTaskID} title={theTitle} desc={theDesc}></EditTask>
+          <EditTask blah={()=>this.getAllTheProjects()} taskProp={theTaskID} title={theTitle} desc={theDesc}></EditTask>
       )
     }
   }
@@ -54,7 +54,7 @@ class TodoList extends Component {
       axios.post(`http://localhost:5000/api/tasks/delete/${theIdOfTheTask}`, {}, {withCredentials: true})
       .then((response)=>{
         console.log(response);
-        this.getAllTheTasks();
+        this.getAllTheProjects();
       })
       .catch((err)=>{
         console.log(err)
@@ -80,7 +80,7 @@ class TodoList extends Component {
 
   showTasks(){
     if(this.state.theTasks === null){
-      this.getAllTheTasks();
+      this.getAllTheProjects();
     }
 
     if(this.state.theTasks){
@@ -106,7 +106,7 @@ class TodoList extends Component {
   render() {
     return (
    <div>
-        <h1> One Single Project Name</h1>
+        <h1> The Single Greatest Project Management App in the History of Human History </h1>
       <div className="App">
         
           <div className="list">
@@ -116,7 +116,7 @@ class TodoList extends Component {
 
           
         <div className="add">
-        <AddTask blah={()=>this.getAllTheTasks()}></AddTask>
+        <AddTask blah={()=>this.getAllTheProjects()}></AddTask>
         </div>
 
 
@@ -133,4 +133,4 @@ class TodoList extends Component {
 
 
 
-export default TodoList;
+export default ProjectList;
