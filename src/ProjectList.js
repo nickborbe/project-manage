@@ -51,7 +51,7 @@ class ProjectList extends Component {
   }
 
     deleteProject(theIdOfTheProject){
-      axios.post(`http://localhost:5000/api/Projects/delete/${theIdOfTheProject}`, {}, {withCredentials: true})
+      axios.post(`http://localhost:5000/api/projects/delete/${theIdOfTheProject}`, {}, {withCredentials: true})
       .then((response)=>{
         console.log(response);
         this.getAllTheProjects();
@@ -61,11 +61,11 @@ class ProjectList extends Component {
       })
     }
 
-    seeIfProjectBelongsToUser(Project, index){
-      if(this.state.loggedInUser && Project.owner == this.state.loggedInUser._id){
+    seeIfProjectBelongsToUser(project, index){
+      if(this.state.loggedInUser && project.owner == this.state.loggedInUser._id){
         return (
           <div>
-          <button onClick={()=>{this.deleteProject(Project._id)}} style={{float:'right', backgroundColor: 'red', padding: '10px', margin: '0 5px'}}>
+          <button onClick={()=>{this.deleteProject(project._id)}} style={{float:'right', backgroundColor: 'red', padding: '10px', margin: '0 5px'}}>
           Delete Project
           </button>
         <button onClick={()=>this.toggleEditForm(index)} style={{float:'right', backgroundColor: 'greenyellow', padding: '10px',  margin: '0 5px'}}> 
@@ -86,13 +86,13 @@ class ProjectList extends Component {
     if(this.state.theProjects){
 
       return (
-        this.state.theProjects.map((Project, index) => {
+        this.state.theProjects.map((project, index) => {
           return(
         <div key={index}>
-          {this.seeIfProjectBelongsToUser(Project, index)}
-        <h3>{Project.title}</h3>
-        <p style={{maxWidth: '400px'}} >{Project.description} </p>
-        {this.renderForm(index, Project._id, Project.title, Project.description)}
+          {this.seeIfProjectBelongsToUser(project, index)}
+        <h3>{project.title}</h3>
+        <p style={{maxWidth: '400px'}} >{project.description} </p>
+        {this.renderForm(index, project._id, project.title, project.description)}
 
       
         </div>

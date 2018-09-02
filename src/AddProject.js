@@ -3,7 +3,7 @@ import axios from 'axios';
 
 
 
-class AddTask extends Component {
+class AddProject extends Component {
     constructor(props){
         super(props)
         this.state = {
@@ -12,9 +12,9 @@ class AddTask extends Component {
         }
     }
 
-    addTask(){
+    addProject(){
 
-        axios.post("http://localhost:5000/api/tasks/create",{title: this.state.titleInput,description: this.state.descInput}, {withCredentials: true})
+        axios.post("http://localhost:5000/api/Projects/create",{title: this.state.titleInput,description: this.state.descInput}, {withCredentials: true})
         .then((res)=>{
             console.log(res)
             this.props.blah();
@@ -44,9 +44,9 @@ class AddTask extends Component {
 
     render(){
       return(
-      <div className="add-task">
+      <div className="add-project">
 
-        <h3> Add a New Task </h3>
+        <h3> Add a New Project </h3>
 
         <label> Title </label>
         <input value={this.state.titleInput} onChange={(e)=>{this.updateTitle(e)}} type="text"/> 
@@ -55,7 +55,7 @@ class AddTask extends Component {
         <textarea rows="10" cols="25" value={this.state.descInput}  onChange={(e)=>{this.updateDescription(e)}} type="text"/> 
         
   
-        <button className="grn-btn" onClick={()=>{this.addTask()}} > Submit New Task </button>
+        <button className="grn-btn" onClick={()=>{this.addProject()}} > Submit New Project </button>
   
       </div>
       )
@@ -63,4 +63,4 @@ class AddTask extends Component {
   
   }
 
-  export default AddTask
+  export default AddProject

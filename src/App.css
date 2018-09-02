@@ -33,7 +33,7 @@ h1{
   font-size: 17px;
 }
 
-.add-task input{
+.add-project input{
   width: 80%;
   height: 35px;
 
@@ -128,13 +128,13 @@ li{
 
 
 
-.add-task{
+.add-project{
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.add-task > *{
+.add-project > *{
   margin: 3%;
   text-align: center;
 }
