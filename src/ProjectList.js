@@ -24,7 +24,7 @@ class ProjectList extends Component {
 
 
   getAllTheProjects(){
-    axios.get("http://localhost:5000/api/tasks", {withCredentials: true})
+    axios.get("http://localhost:5000/api/projects", {withCredentials: true})
     .then((allTheTasks)=>{
       this.setState({theTasks: allTheTasks.data, showing: false, loggedInUser: this.state.loggedInUser})
     })
@@ -110,7 +110,7 @@ class ProjectList extends Component {
       <div className="App">
         
           <div className="list">
-          <h2> List of Tasks </h2>
+          <h2> My Projects </h2>
             {this.showTasks()}
           </div>
 
