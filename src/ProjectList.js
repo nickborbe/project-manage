@@ -106,7 +106,7 @@ class TodoList extends Component {
   render() {
     return (
    <div>
-        <h1> The Single Greatest To-Do List In The History of Human History</h1>
+        <h1> One Single Project Name</h1>
       <div className="App">
         
           <div className="list">
