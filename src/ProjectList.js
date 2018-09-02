@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
 import axios from 'axios';
-import AddTask from './AddProject';
-import EditTask from './EditProject'
+import AddProject from './AddProject';
+import EditProject from './EditProject'
 
 
 
@@ -10,7 +10,7 @@ class ProjectList extends Component {
   constructor(props){
     super(props)
     this.state = {
-      theTasks: null,
+      theProjects: null,
       showing: false,
       loggedInUser: this.props.theActualUser,
     }
@@ -25,8 +25,8 @@ class ProjectList extends Component {
 
   getAllTheProjects(){
     axios.get("http://localhost:5000/api/projects", {withCredentials: true})
-    .then((allTheTasks)=>{
-      this.setState({theTasks: allTheTasks.data, showing: false, loggedInUser: this.state.loggedInUser})
+    .then((allTheProjects)=>{
+      this.setState({theProjects: allTheProjects.data, showing: false, loggedInUser: this.state.loggedInUser})
     })
     .catch((err)=>{
       console.log(err)
@@ -34,24 +34,24 @@ class ProjectList extends Component {
   }
 
 
-  toggleEditForm(whichTask){
-    if(this.state.showing === whichTask){
-      this.setState({theTasks: this.state.theTasks, showing: false});
+  toggleEditForm(whichProject){
+    if(this.state.showing === whichProject){
+      this.setState({theProjects: this.state.theProjects, showing: false});
     } else{
-      this.setState({theTasks: this.state.theTasks, showing: whichTask});
+      this.setState({theProjects: this.state.theProjects, showing: whichProject});
     }
   }
 
-  renderForm(theIndex, theTaskID, theTitle, theDesc){
+  renderForm(theIndex, theProjectID, theTitle, theDesc){
     if(this.state.showing === theIndex){
         return(
-          <EditTask blah={()=>this.getAllTheProjects()} taskProp={theTaskID} title={theTitle} desc={theDesc}></EditTask>
+          <EditProject blah={()=>this.getAllTheProjects()} ProjectProp={theProjectID} title={theTitle} desc={theDesc}></EditProject>
       )
     }
   }
 
-    deleteTask(theIdOfTheTask){
-      axios.post(`http://localhost:5000/api/tasks/delete/${theIdOfTheTask}`, {}, {withCredentials: true})
+    deleteProject(theIdOfTheProject){
+      axios.post(`http://localhost:5000/api/Projects/delete/${theIdOfTheProject}`, {}, {withCredentials: true})
       .then((response)=>{
         console.log(response);
         this.getAllTheProjects();
@@ -61,15 +61,15 @@ class ProjectList extends Component {
       })
     }
 
-    seeIfTaskBelongsToUser(task, index){
-      if(this.state.loggedInUser && task.owner == this.state.loggedInUser._id){
+    seeIfProjectBelongsToUser(Project, index){
+      if(this.state.loggedInUser && Project.owner == this.state.loggedInUser._id){
         return (
           <div>
-          <button onClick={()=>{this.deleteTask(task._id)}} style={{float:'right', backgroundColor: 'red', padding: '10px', margin: '0 5px'}}>
-          Delete Task
+          <button onClick={()=>{this.deleteProject(Project._id)}} style={{float:'right', backgroundColor: 'red', padding: '10px', margin: '0 5px'}}>
+          Delete Project
           </button>
         <button onClick={()=>this.toggleEditForm(index)} style={{float:'right', backgroundColor: 'greenyellow', padding: '10px',  margin: '0 5px'}}> 
-        Edit This Task 
+        Edit This Project 
         </button>
         </div>
         )
@@ -78,21 +78,21 @@ class ProjectList extends Component {
 
 
 
-  showTasks(){
-    if(this.state.theTasks === null){
+  showProjects(){
+    if(this.state.theProjects === null){
       this.getAllTheProjects();
     }
 
-    if(this.state.theTasks){
+    if(this.state.theProjects){
 
       return (
-        this.state.theTasks.map((task, index) => {
+        this.state.theProjects.map((Project, index) => {
           return(
         <div key={index}>
-          {this.seeIfTaskBelongsToUser(task, index)}
-        <h3>{task.title}</h3>
-        <p style={{maxWidth: '400px'}} >{task.description} </p>
-        {this.renderForm(index, task._id, task.title, task.description)}
+          {this.seeIfProjectBelongsToUser(Project, index)}
+        <h3>{Project.title}</h3>
+        <p style={{maxWidth: '400px'}} >{Project.description} </p>
+        {this.renderForm(index, Project._id, Project.title, Project.description)}
 
       
         </div>
@@ -111,12 +111,12 @@ class ProjectList extends Component {
         
           <div className="list">
           <h2> My Projects </h2>
-            {this.showTasks()}
+            {this.showProjects()}
           </div>
 
           
         <div className="add">
-        <AddTask blah={()=>this.getAllTheProjects()}></AddTask>
+        <AddProject blah={()=>this.getAllTheProjects()}></AddProject>
         </div>
 
 
