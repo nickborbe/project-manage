@@ -26,7 +26,7 @@ class ProjectList extends Component {
   getAllTheProjects(){
     axios.get("http://localhost:5000/api/projects", {withCredentials: true})
     .then((allTheProjects)=>{
-      this.setState({theProjects: allTheProjects.data, showing: false, loggedInUser: this.state.loggedInUser})
+      this.setState({...this.state, theProjects: allTheProjects.data, showing: false})
     })
     .catch((err)=>{
       console.log(err)
@@ -38,12 +38,19 @@ class ProjectList extends Component {
     if(this.state.showing === whichProject){
       this.setState({theProjects: this.state.theProjects, showing: false});
     } else{
-      this.setState({theProjects: this.state.theProjects, showing: whichProject});
+      this.setState({...this.state,
+            
+    showing: whichProject});
     }
   }
 
   toggleAddForm(){
-    
+    if(this.state.showing === whichProject){
+      this.setState({...this.state, showing: false});
+    } else{
+      this.setState({...this.state, showing: whichProject});
+    }
+
   }
 
   renderForm(theIndex, theProjectID, theTitle, theDesc, theTasks){
