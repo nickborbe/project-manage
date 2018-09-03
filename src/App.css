@@ -167,5 +167,19 @@ li{
   margin: 3px;
 }
 
+button:focus{
+  outline: none;
+}
+
+button:active{
+  font-weight: bolder;
+  font-size: 15px;
+}
+
+.grn-btn:active{
+  font-weight: bolder;
+  font-size: 28px;
+}
+
 
 
