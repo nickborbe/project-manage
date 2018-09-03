@@ -18,6 +18,16 @@ button{
   border-radius: 7px;
 }
 
+.little-blue-btn{
+  background-color: #337ab7;
+  padding: 10px 25px;
+  margin: 0 5px;
+  border-radius: 7px;
+  color: white;
+}
+
+
+
 body{
   background-color: #f8f4f9;
 }

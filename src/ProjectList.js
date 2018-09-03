@@ -81,7 +81,7 @@ class ProjectList extends Component {
         <button onClick={()=>this.toggleEditForm(index)} style={{float:'right', backgroundColor: 'greenyellow', padding: '10px',  margin: '0 5px'}}> 
         Edit This Project 
         </button>
-        <button className="little-green-btn">See Details</button>
+        <button className="little-blue-btn">See Details</button>
         </div>
         )
       } 
