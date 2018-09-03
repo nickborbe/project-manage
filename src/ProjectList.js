@@ -71,6 +71,7 @@ class ProjectList extends Component {
         <button onClick={()=>this.toggleEditForm(index)} style={{float:'right', backgroundColor: 'greenyellow', padding: '10px',  margin: '0 5px'}}> 
         Edit This Project 
         </button>
+        <button className="little-green-btn">See Details</button>
         </div>
         )
       } 
@@ -88,10 +89,10 @@ class ProjectList extends Component {
       return (
         this.state.theProjects.map((project, index) => {
           return(
-        <div key={index}>
-          {this.seeIfProjectBelongsToUser(project, index)}
+        <div className="singleProjectInList" key={index}>
         <h3>{project.title}</h3>
         <p style={{maxWidth: '400px'}} >{project.description} </p>
+          {this.seeIfProjectBelongsToUser(project, index)}
         {this.renderForm(index, project._id, project.title, project.description)}
 
       

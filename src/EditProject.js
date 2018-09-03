@@ -50,9 +50,9 @@ class EditProject extends Component {
         <input value={this.state.titleInput} onChange={(e)=>{this.updateTitle(e)}}  type="text"/> 
   
         <label> Description </label>
-        <input value={this.state.descInput}  onChange={(e)=>{this.updateDescription(e)}}  type="text"/> 
+        <textarea value={this.state.descInput}  onChange={(e)=>{this.updateDescription(e)}}  type="text" rows="4"/> 
   
-        <button onClick={()=>this.submitChanges()}> Save Changes </button>
+        <button className="little-green-btn" onClick={()=>this.submitChanges()}> Save Changes </button>
   
         </div>
         )
