@@ -42,10 +42,10 @@ class ProjectList extends Component {
     }
   }
 
-  renderForm(theIndex, theProjectID, theTitle, theDesc){
+  renderForm(theIndex, theProjectID, theTitle, theDesc, theTasks){
     if(this.state.showing === theIndex){
         return(
-          <EditProject blah={()=>this.getAllTheProjects()} projectProp={theProjectID} title={theTitle} desc={theDesc}></EditProject>
+          <EditProject blah={()=>this.getAllTheProjects()} projectProp={theProjectID} title={theTitle} desc={theDesc} theTasks={theTasks}></EditProject>
       )
     }
   }
@@ -93,7 +93,7 @@ class ProjectList extends Component {
         <h3>{project.title}</h3>
         <p style={{maxWidth: '400px'}} >{project.description} </p>
           {this.seeIfProjectBelongsToUser(project, index)}
-        {this.renderForm(index, project._id, project.title, project.description)}
+        {this.renderForm(index, project._id, project.title, project.description, project.tasks)}
 
       
         </div>

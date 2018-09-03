@@ -148,5 +148,13 @@ li{
  
 }
 
+.each-task-in-edit-form{
+  display: flex;
+  align-items: center;
+}
+.each-task-in-edit-form *{
+  margin: 3px;
+}
+
 
 

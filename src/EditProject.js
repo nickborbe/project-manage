@@ -9,6 +9,7 @@ class EditProject extends Component {
         this.state = {
             titleInput: this.props.title,
             descInput: this.props.desc,
+            theTasks: this.props.theTasks,
         }
     }
 
@@ -42,6 +43,22 @@ class EditProject extends Component {
     }
 
 
+    renderEachTask(){
+        return(
+            this.state.theTasks.map((eachTask, index) => {
+               return( 
+               <li className="each-task-in-edit-form" key={index}>
+                <h5>{eachTask.title}</h5>
+                <p>Status: {eachTask.doneYet? 'Complete' : 'Incomplete'}</p>
+                </li>
+               )
+            })
+        )
+    }
+
+    
+
+
     render(){
         return(
         <div className="edit-project">
@@ -52,6 +69,12 @@ class EditProject extends Component {
         <label> Description </label>
         <textarea value={this.state.descInput}  onChange={(e)=>{this.updateDescription(e)}}  type="text" rows="4"/> 
   
+        <h4>Tasks</h4>
+        <ul>
+            {this.renderEachTask()}
+        </ul>
+
+
         <button className="little-green-btn" onClick={()=>this.submitChanges()}> Save Changes </button>
   
         </div>
