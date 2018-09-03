@@ -42,6 +42,10 @@ class ProjectList extends Component {
     }
   }
 
+  toggleAddForm(){
+    
+  }
+
   renderForm(theIndex, theProjectID, theTitle, theDesc, theTasks){
     if(this.state.showing === theIndex){
         return(
