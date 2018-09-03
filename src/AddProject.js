@@ -28,15 +28,15 @@ class AddProject extends Component {
 
     updateTitle(e){
         this.setState({
+            ...this.state,
             titleInput: e.target.value,
-            descInput: this.state.descInput
         })
 
     }
 
     updateDescription(e){
         this.setState({
-            titleInput: this.state.titleInput,
+            ...this.state,
             descInput: e.target.value,
         })
     }
