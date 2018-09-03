@@ -12,7 +12,7 @@ class ProjectList extends Component {
     this.state = {
       theProjects: null,
       showing: false,
-      addingWhat: 'project',
+      addingWhat: false,
       loggedInUser: this.props.theActualUser,
     }
   }
@@ -43,11 +43,11 @@ class ProjectList extends Component {
     }
   }
 
-  toggleAddForm(){
-    if(this.state.addingWhat === 'project'){
-      this.setState({...this.state, addingWhat: 'task'});
+  toggleAddForm(whichProject){
+    if(this.state.addingWhat === false){
+      this.setState({...this.state, addingWhat: whichProject});
     } else{
-      this.setState({...this.state, showing: 'project'});
+      this.setState({...this.state, addingWhat: false});
     }
 
   }
@@ -113,6 +113,12 @@ class ProjectList extends Component {
     } // closes the if statement
   }
 
+    chooseWhichAddFormToShow(){
+      return(
+        <AddProject blah={()=>this.getAllTheProjects()}></AddProject>
+      )
+    }
+
 
   render() {
     return (
@@ -127,7 +133,7 @@ class ProjectList extends Component {
 
           
         <div className="add">
-        <AddProject blah={()=>this.getAllTheProjects()}></AddProject>
+        {this.chooseWhichAddFormToShow()}
         </div>
 
 
