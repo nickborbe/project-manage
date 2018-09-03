@@ -3,6 +3,7 @@ import './App.css';
 import axios from 'axios';
 import AddProject from './AddProject';
 import EditProject from './EditProject'
+import AddTask from './AddTask'
 
 
 
@@ -12,7 +13,7 @@ class ProjectList extends Component {
     this.state = {
       theProjects: null,
       showing: false,
-      addingWhat: false,
+      addingToWhat: false,
       loggedInUser: this.props.theActualUser,
     }
   }
@@ -44,10 +45,10 @@ class ProjectList extends Component {
   }
 
   toggleAddForm(whichProject){
-    if(this.state.addingWhat === false){
-      this.setState({...this.state, addingWhat: whichProject});
+    if(this.state.addingToWhat === false){
+      this.setState({...this.state, addingToWhat: whichProject});
     } else{
-      this.setState({...this.state, addingWhat: false});
+      this.setState({...this.state, addingToWhat: false});
     }
 
   }
@@ -114,9 +115,15 @@ class ProjectList extends Component {
   }
 
     chooseWhichAddFormToShow(){
-      return(
-        <AddProject blah={()=>this.getAllTheProjects()}></AddProject>
-      )
+      if(this.state.addingToWhat === false){
+        return(
+          <AddProject blah={()=>this.getAllTheProjects()}></AddProject>
+        )
+      }else{
+        return(
+          <AddTask blah={()=>this.getAllTheProjects()} theProject={this.state.addingToWhat}></AddTask>
+        )
+      }
     }
 
 
