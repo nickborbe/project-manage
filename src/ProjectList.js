@@ -13,6 +13,7 @@ class ProjectList extends Component {
     this.state = {
       theProjects: null,
       showing: false,
+      projectBeingEdited: false,
       addingToWhat: false,
       loggedInUser: this.props.theActualUser,
     }
@@ -38,9 +39,9 @@ class ProjectList extends Component {
 
   toggleEditForm(whichProject){
     if(this.state.showing === whichProject){
-      this.setState({...this.state, theProjects: this.state.theProjects, showing: false});
+      this.setState({...this.state, showing: false});
     } else{
-      this.setState({...this.state, showing: whichProject});
+      this.setState({...this.state, showing: whichProject, projectBeingEdited: this.state.theProjects[whichProject]._id});
     }
   }
 
@@ -114,7 +115,7 @@ class ProjectList extends Component {
         )
       }else{
         return(
-          <AddTask blah={()=>this.getAllTheProjects()} theProject={this.state.showing}></AddTask>
+          <AddTask blah={()=>this.getAllTheProjects()} theProject={this.state.projectBeingEdited}></AddTask>
         )
       }
     }
