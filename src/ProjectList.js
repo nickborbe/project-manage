@@ -127,7 +127,7 @@ class ProjectList extends Component {
     }
 
 
-  render() {
+  render(){
     return (
    <div>
         <h1> The Single Greatest Project Management App in the History of Human History </h1>
