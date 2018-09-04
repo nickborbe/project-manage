@@ -38,21 +38,13 @@ class ProjectList extends Component {
 
   toggleEditForm(whichProject){
     if(this.state.showing === whichProject){
-      this.setState({theProjects: this.state.theProjects, showing: false});
+      this.setState({...this.state, theProjects: this.state.theProjects, showing: false});
     } else{
       this.setState({...this.state, showing: whichProject});
-      this.toggleAddForm(whichProject);
     }
   }
 
-  toggleAddForm(whichProject){
-    if(this.state.addingToWhat === false){
-      this.setState({...this.state, addingToWhat: whichProject});
-    } else{
-      this.setState({...this.state, addingToWhat: false});
-    }
-
-  }
+ 
 
   renderForm(theIndex, theProjectID, theTitle, theDesc, theTasks){
     if(this.state.showing === theIndex){
@@ -116,13 +108,13 @@ class ProjectList extends Component {
   }
 
     chooseWhichAddFormToShow(){
-      if(this.state.addingToWhat === false){
+      if(this.state.showing === false){
         return(
           <AddProject blah={()=>this.getAllTheProjects()}></AddProject>
         )
       }else{
         return(
-          <AddTask blah={()=>this.getAllTheProjects()} theProject={this.state.addingToWhat}></AddTask>
+          <AddTask blah={()=>this.getAllTheProjects()} theProject={this.state.showing}></AddTask>
         )
       }
     }
