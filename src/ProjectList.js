@@ -41,6 +41,7 @@ class ProjectList extends Component {
       this.setState({theProjects: this.state.theProjects, showing: false});
     } else{
       this.setState({...this.state, showing: whichProject});
+      this.toggleAddForm(whichProject);
     }
   }
 
