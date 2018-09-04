@@ -114,8 +114,11 @@ class ProjectList extends Component {
           <AddProject blah={()=>this.getAllTheProjects()}></AddProject>
         )
       }else{
+        let distance = this.state.showing*200+ 500;
         return(
-          <AddTask blah={()=>this.getAllTheProjects()} theProject={this.state.projectBeingEdited}></AddTask>
+          <div style={{position:'absolute', top:`${distance}px`, right: '400px' }}>
+            <AddTask blah={()=>this.getAllTheProjects()} theProject={this.state.projectBeingEdited}></AddTask>
+          </div>
         )
       }
     }

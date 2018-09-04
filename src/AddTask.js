@@ -46,7 +46,7 @@ class AddTask extends Component {
       return(
       <div className="add-task">
 
-        <h3> Add a New Task </h3>
+        <h3> Add a New Task To This Project </h3>
 
         <label> Title </label>
         <input value={this.state.titleInput} onChange={(e)=>{this.updateTitle(e)}} type="text"/> 
