@@ -1,11 +1,15 @@
 import React, { Component } from 'react'
-import { Link, Route } from 'react-router-dom'
+import { Link, Route, Switch } from 'react-router-dom'
+
 
 
 import './App.css';
 import axios from 'axios';
 import ProjectList from './ProjectList'
 import User from './User'
+import ProjectDetails from './ProjectDetails'
+import TaskDetails from './TaskDetails'
+
 
 
 
@@ -123,9 +127,23 @@ toggleLoginForm(){
               {this.showLoginForm()}        
                   
 
+
         <div>
           <Route path="/projectlist" render={()=> <ProjectList sendTheUser={this.getUserFromUserComponent} theActualUser={this.state.loggedInUser}/>} />
         </div>
+
+
+        <div>
+          <Route exact path="/oneProject/:id" component={ProjectDetails}   />
+        </div>
+
+        <div>
+          <Route exact path="/oneProject/:id/oneTask/:taskID" component={TaskDetails}/>
+        </div>
+
+
+
+
 
 
 

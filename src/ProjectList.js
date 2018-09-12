@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
+import {Link, Route} from 'react-router-dom';
 import './App.css';
 import axios from 'axios';
 import AddProject from './AddProject';
 import EditProject from './EditProject'
 import AddTask from './AddTask'
-
 
 
 class ProjectList extends Component {
@@ -67,6 +67,7 @@ class ProjectList extends Component {
     }
 
     seeIfProjectBelongsToUser(project, index){
+      const url = "/oneProject/" + project._id
       if(this.state.loggedInUser && project.owner == this.state.loggedInUser._id){
         return (
           <div>
@@ -76,7 +77,9 @@ class ProjectList extends Component {
         <button onClick={()=>this.toggleEditForm(index)} style={{float:'right', backgroundColor: 'greenyellow', padding: '10px',  margin: '0 5px'}}> 
         Edit This Project 
         </button>
-        <button className="little-blue-btn">See Details</button>
+        <button className="little-blue-btn">
+        <Link to={url}>See Details</Link>
+        </button>
         </div>
         )
       } 

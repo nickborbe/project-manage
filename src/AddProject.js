@@ -14,7 +14,7 @@ class AddProject extends Component {
 
     addProject(){
 
-        axios.post("http://localhost:5000/api/Projects/create",{title: this.state.titleInput,description: this.state.descInput}, {withCredentials: true})
+        axios.post("http://localhost:5000/api/projects/create",{title: this.state.titleInput,description: this.state.descInput}, {withCredentials: true})
         .then((res)=>{
             console.log(res)
             this.props.blah();
