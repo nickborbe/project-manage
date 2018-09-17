@@ -21,7 +21,6 @@ class ProjectList extends Component {
 
   componentWillReceiveProps(nextProps) {
     this.setState({...this.state, loggedInUser: nextProps["theActualUser"]})
-    console.log('re rendering to do list component', this.state)
   }
 
 
