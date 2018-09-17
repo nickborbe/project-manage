@@ -15,7 +15,6 @@ class TaskDetails extends Component {
     componentDidMount(){
         axios.get('http://localhost:5000/api/projects/'+this.props.match.params.id+"/tasks/"+this.props.match.params.taskID)
         .then((theTask)=>{
-            console.log('++++++++++++++',theTask)
             const t = theTask.data
             this.setState(t)
         })
