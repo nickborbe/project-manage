@@ -181,5 +181,10 @@ button:active{
   font-size: 28px;
 }
 
+.projectDetails{
+  padding: 0 10%;
+  text-align: center;
+}
+
 
 

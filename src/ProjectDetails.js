@@ -32,7 +32,7 @@ class ProjectDetails extends Component {
         return(
 
 
-            <div>
+            <div className="projectDetails">
                 <h1>{this.state.title}</h1>
                 <p>{this.state.description}</p>
 
