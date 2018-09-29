@@ -34,9 +34,14 @@ class ProjectDetails extends Component {
 
             <div className="projectDetails">
                 <h1>{this.state.title}</h1>
-                <p>{this.state.description}</p>
+                <h3>{this.state.description}</h3>
+                <hr />
 
-            
+                <br />
+                <br />
+
+
+            {this.state.tasks.length > 0 && <h2>Tasks </h2>}
             {this.state.tasks.map((task, index) => {
                 const theURL = "/oneProject/"+this.state._id+"/oneTask/"+task._id
           return(
