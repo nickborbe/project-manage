@@ -45,7 +45,7 @@ class ProjectDetails extends Component {
             <Link to={theURL} > {task.title} </Link>
        
         </h3>
-        <p style={{maxWidth: '400px'}} >{task.description} </p>
+        <p  >{task.description} </p>
      
 
 
