@@ -28,7 +28,7 @@ class ProjectDetails extends Component {
 
 
     render(){
-        console.log('=-=-=-=-=-=-=-=',this.state.tasks)
+        
         return(
 
 
